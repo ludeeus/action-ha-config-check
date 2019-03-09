@@ -13,21 +13,21 @@ workflow "Check Home Assistant Configuration" {
 }
 
 action "STABLE" {
-  uses = "ludeeus/actions/ha-config-check@master"
+  uses = "ludeeus/action-ha-config-check@master"
   env = {
     ACTION_VERSION = "STABLE"
   }
 }
 
 action "RC" {
-  uses = "ludeeus/actions/ha-config-check@master"
+  uses = "ludeeus/action-ha-config-check@master"
   env = {
     ACTION_VERSION = "RC"
   }
 }
 
 action "DEV" {
-  uses = "ludeeus/actions/ha-config-check@master"
+  uses = "ludeeus/action-ha-config-check@master"
   env = {
     ACTION_VERSION = "DEV"
     ACTION_ALLOW_FAIL = "True"
