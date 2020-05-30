@@ -25,3 +25,5 @@ jobs:
       uses: actions/checkout@master
     - name: Run Config Check
       uses: ./
+      with:
+          config_path: testfiles
