@@ -20,12 +20,12 @@ if [ -d "${INPUT_CONFIG_PATH}/custom_components/" ]; then
 
       for requirement in $(jq -r '.[]' <<< "$(jq '.requirements' "$manifest")"); do
         echo "::info:: Installing requirement '$requirement'"
-        python3 -m pip --disable-pip-version-check install "$requirement" || statuscode=1
+        python3 -m pip --user --disable-pip-version-check install "$requirement" || statuscode=1
       done
     done
 fi
 
-echo "::info:: Running configcheck"
+echo "::info:: Running config check"
 hass --script check_config --config "${GITHUB_WORKSPACE}"/"${INPUT_CONFIG_PATH}" || statuscode=1
 
 echo "::info:: Config check is complete"
