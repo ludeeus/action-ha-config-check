@@ -5,14 +5,11 @@ statuscode=0
 
 echo "::info:: Installing Home Assistant"
 if [ "${INPUT_VERSION}" = "DEV" ]; then
-  python3 -m pip install --disable-pip-version-check git+git://github.com/home-assistant/home-assistant.git@dev ||
-    echo "::error:: Cloud not install 'homeassistant'"; statuscode=1
+  python3 -m pip install --disable-pip-version-check git+git://github.com/home-assistant/home-assistant.git@dev || statuscode=1
 elif [ "${INPUT_VERSION}" = "RC" ]; then
-  python3 -m pip install --disable-pip-version-check --pre homeassistant ||
-    echo "::error:: Cloud not install 'homeassistant'"; statuscode=1
+  python3 -m pip install --disable-pip-version-check --pre homeassistant || statuscode=1
 else
-  python3 -m pip install --disable-pip-version-check homeassistant ||
-    echo "::error:: Cloud not install 'homeassistant'"; statuscode=1
+  python3 -m pip install --disable-pip-version-check homeassistant || statuscode=1
 fi
 
 if [ -d "${INPUT_CONFIG_PATH}/custom_components/" ]; then
@@ -23,8 +20,7 @@ if [ -d "${INPUT_CONFIG_PATH}/custom_components/" ]; then
 
       for requirement in $(jq -r '.[]' <<< "$(jq '.requirements' "$manifest")"); do
         echo "::info:: Installing requirement '$requirement'"
-        python3 -m pip install --disable-pip-version-check "$requirement" || 
-          echo "::error:: Cloud not install requirement '$requirement'"; statuscode=1
+        python3 -m pip install --disable-pip-version-check "$requirement" || statuscode=1
       done
     done
 fi
