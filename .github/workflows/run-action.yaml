@@ -1,0 +1,29 @@
+name: "Run action"
+on:
+  push:
+    branch:
+      - master
+  pull_request:
+    branch:
+      - master
+
+jobs:
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Run ShellCheck
+      uses: ludeeus/action-shellcheck@master
+
+  check:
+    name: Home Assistant Config Check
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Run Config Check
+      uses: ./
+      with:
+          config_path: testfiles
