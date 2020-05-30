@@ -1,0 +1,12 @@
+{
+	"name": "Dockerfile",
+	"context": "..",
+
+	"dockerFile": "..\\Dockerfile",
+	"containerEnv": {"INPUT_CONFIG_PATH": "testfiles"},
+
+	"settings": { 
+		"terminal.integrated.shell.linux": null
+	},
+	"extensions": []
+}

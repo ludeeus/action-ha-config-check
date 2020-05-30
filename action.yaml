@@ -1,0 +1,18 @@
+name: "Home Assistant Configuration Check"
+author: "Ludeeus <hi@ludeeus.dev>"
+description: "Check your configuration for a against Home Assistant versions."
+inputs:
+  version:
+    description: "The version to use of Home Assistant ('DEV', 'RC', 'STABLE')"
+    required: false
+    default: 'STABLE'
+  config_path:
+    description: "Relative path to your configuration directory if not in the root"
+    required: false
+    default: ''
+runs: 
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'home'  
+  color: 'blue'

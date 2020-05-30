@@ -1,7 +1,14 @@
-FROM python:3.7
+FROM ludeeus/container:python
 
 COPY runaction.sh /runaction.sh
-RUN chmod +x /runaction.sh
+RUN \
+    apk add --no-cache \
+        jq \
+        bash\
+    \
+    && python3 -m pip install \
+        wheel \
+        setuptools
 
 ENTRYPOINT ["/runaction.sh"]
 
