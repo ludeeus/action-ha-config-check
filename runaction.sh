@@ -15,11 +15,10 @@ fi
 if [ -d "${INPUT_CONFIG_PATH}/custom_components/" ]; then
   echo "::info:: Install requirements for custom integrations"
   shopt -s globstar nullglob
-  for manifest in ${INPUT_CONFIG_PATH}/custom_components/**/manifest.json; do
+  for manifest in "$INPUT_CONFIG_PATH"/custom_components/**/manifest.json; do
     echo "::info:: Checking manifest file $manifest"
-    requirements=$(jq '.requirements' "$manifest")
 
-      for requirement in $(jq -r '.[]' <<< $(jq .requirements "$manifest")); do
+      for requirement in $(jq -r '.[]' <<< "$(jq '.requirements' "$manifest")"); do
         echo "::info:: Installing requirement '$requirement'"
         python3 -m pip --disable-pip-version-check install "$requirement" || statuscode=1
       done
