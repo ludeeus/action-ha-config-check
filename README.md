@@ -33,7 +33,7 @@ jobs:
 
 input | description
 -- | --
-`version` | `STABLE`, `RC` or `DEV`.
+`version` | `STABLE`, `RC` or `DEV` (defaults to `STABLE`).
 `config_path` | Relative path to your configuration if not in the root of the repository.
 
 ### Example with inputs

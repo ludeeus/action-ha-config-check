@@ -5,11 +5,11 @@ statuscode=0
 
 echo "::info:: Installing Home Assistant"
 if [ "${INPUT_VERSION}" = "DEV" ]; then
-  python3 -m pip install --disable-pip-version-check git+git://github.com/home-assistant/home-assistant.git@dev
+  python3 -m pip install --user --disable-pip-version-check git+git://github.com/home-assistant/home-assistant.git@dev
 elif [ "${INPUT_VERSION}" = "RC" ]; then
-  python3 -m pip install --disable-pip-version-check --pre homeassistant
+  python3 -m pip install --user --disable-pip-version-check --pre homeassistant
 else
-  python3 -m pip install --disable-pip-version-check homeassistant
+  python3 -m pip install --user --disable-pip-version-check homeassistant
 fi
 
 if [ -d "${INPUT_CONFIG_PATH}/custom_components/" ]; then
@@ -20,7 +20,7 @@ if [ -d "${INPUT_CONFIG_PATH}/custom_components/" ]; then
 
       for requirement in $(jq -r '.[]' <<< "$(jq '.requirements' "$manifest")"); do
         echo "::info:: Installing requirement '$requirement'"
-        python3 -m pip --user --disable-pip-version-check install "$requirement" || statuscode=1
+        python3 -m pip install --disable-pip-version-check --user "$requirement" || statuscode=1
       done
     done
 fi
