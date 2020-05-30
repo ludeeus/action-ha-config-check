@@ -10,7 +10,7 @@ RUN \
         wheel \
         setuptools
 
-ENTRYPOINT ["/runaction.sh"]
+ENTRYPOINT ["bash", "/runaction.sh"]
 
 LABEL "name"="ha-config-check"
 LABEL "maintainer"="Ludeeus <ludeeus@gmail.com>"
