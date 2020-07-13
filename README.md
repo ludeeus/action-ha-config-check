@@ -61,3 +61,32 @@ jobs:
         version: DEV
         config_path: config
 ```
+
+### Example checking against STABLE, RC and DEV in parallel
+
+```yaml
+name: "Run action"
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        HA_VERSION: [STABLE, RC, DEV]
+      max-parallel: 3
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Home Assistant Configuration Check
+      uses: ludeeus/action-ha-config-check@master
+      with:
+        version: matrix.HA_VERSION
+        config_path: .
+```
