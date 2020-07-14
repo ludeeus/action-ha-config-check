@@ -6,6 +6,6 @@ RUN \
         jq \
         libxml2 \
         libxslt \
-        zlib
+        zlib-dev
 
 ENTRYPOINT ["bash", "/runaction.sh"]
