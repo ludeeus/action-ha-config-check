@@ -5,6 +5,7 @@ RUN \
     apk add --no-cache \
         jq \
         libxml2 \
-        libxslt
+        libxslt \
+        zlib
 
 ENTRYPOINT ["bash", "/runaction.sh"]
