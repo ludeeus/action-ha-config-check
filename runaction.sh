@@ -3,6 +3,8 @@
 declare statuscode
 statuscode=0
 
+echo "::warning::This action is deprecated, use https://github.com/frenck/action-home-assistant instead"
+
 echo "::info:: Installing Home Assistant"
 if [ "${INPUT_VERSION}" = "DEV" ]; then
   python3 -m pip install --disable-pip-version-check git+git://github.com/home-assistant/home-assistant.git@dev || statuscode=1

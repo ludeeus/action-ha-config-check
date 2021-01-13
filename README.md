@@ -1,5 +1,7 @@
 # Home Assistant Configuration Check
 
+**This action is deprecated, use https://github.com/frenck/action-home-assistant instead**
+
 _Check Home Assistant Configuration as a GitHub action!_
 
 This checks your github hosted configuration against Home Assistant versions.
