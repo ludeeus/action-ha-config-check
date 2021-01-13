@@ -1,6 +1,6 @@
 # Home Assistant Configuration Check
 
-**This action is deprecated, use https://github.com/frenck/action-home-assistant instead**
+**This action is deprecated, use https://github.com/ludeeus/setup-homeassistant or https://github.com/frenck/action-home-assistant instead**
 
 _Check Home Assistant Configuration as a GitHub action!_
 

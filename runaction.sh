@@ -3,7 +3,7 @@
 declare statuscode
 statuscode=0
 
-echo "::warning::This action is deprecated, use https://github.com/frenck/action-home-assistant instead"
+echo "::warning::This action is deprecated, use https://github.com/ludeeus/setup-homeassistant or https://github.com/frenck/action-home-assistant instead"
 
 echo "::info:: Installing Home Assistant"
 if [ "${INPUT_VERSION}" = "DEV" ]; then
